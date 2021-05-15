@@ -7,7 +7,7 @@ const app = express();
 // Configuration
 const PORT = 3006;
 const HOST = "localhost";
-const API_SERVICE_URL = "https://localhost:3002/booking";
+const BOOKING_SERVICE_URL = "https://localhost:3002/booking";
 
 app.use(morgan('dev'));
 
@@ -27,7 +27,7 @@ app.get('/info', (req, res, next) => {
 
 // Proxy endpoints
 app.use('/localhost:3002', createProxyMiddleware({
-  target: API_SERVICE_URL,
+  target: BOOKING_SERVICE_URL,
   changeOrigin: true,
   pathRewrite: {
       ['^/localhost:3002']: '',
