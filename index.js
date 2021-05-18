@@ -5,16 +5,11 @@ const { createProxyMiddleware } = require('http-proxy-middleware');
 const app = express();
 
 // Configuration
-const PORT = 3006;
+const PORT = 2000;
 const HOST = "localhost";
-const BOOKING_SERVICE_URL = "https://localhost:3002/booking";
+const BOOKING_SERVICE_URL = "https://localhost:3002";
 
 app.use(morgan('dev'));
-
-// Mock '/info' GET endpoint
-app.get('/info', (req, res, next) => {
-  res.send('This is a proxy service which proxies to the Booking Service API.');
-});
 
 // Authorization: to be included when I build out Auth
 // app.use('', (req, res, next) => {
@@ -26,7 +21,7 @@ app.get('/info', (req, res, next) => {
 // });
 
 // Proxy endpoints
-app.use('/localhost:3002', createProxyMiddleware({
+app.use('/booking', createProxyMiddleware({
   target: BOOKING_SERVICE_URL,
   changeOrigin: true,
   pathRewrite: {
@@ -39,6 +34,7 @@ app.listen(PORT, HOST, () => {
   console.log(`Starting Proxy at ${HOST}:${PORT}`);
 });
 
-//test req:
-// curl localhost:3006/info
-//curl localhost:3006/localhost:3002/booking/1
+//test my proxy:
+//curl http://localhost:3002/booking?campId=0
+
+
