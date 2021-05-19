@@ -11,6 +11,11 @@ const BOOKING_SERVICE_URL = "https://localhost:3002";
 
 app.use(morgan('dev'));
 
+//test my Proxy
+app.get('/info', (req, res, next) => {
+  res.send('This is a test.');
+});
+
 // Authorization: to be included when I build out Auth
 // app.use('', (req, res, next) => {
 //   if (req.headers.authorization) {
@@ -21,11 +26,11 @@ app.use(morgan('dev'));
 // });
 
 // Proxy endpoints
-app.use('/booking', createProxyMiddleware({
+app.use('/localhost:3002', createProxyMiddleware({
   target: BOOKING_SERVICE_URL,
   changeOrigin: true,
   pathRewrite: {
-      ['^/localhost:3002']: '',
+      ['/localhost:3002']: '',
   },
 }));
 
