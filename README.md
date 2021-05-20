@@ -1,14 +1,14 @@
 #
 Proxy for Booking Service. 
 
-INSTRUCTIONS:
-Clone each ArrrrWeBeAnneBonny Service to your local FEC directory
-cd into each Service and run:
-  git pull origin main
-  npm install
-  (run their build script)
-  npm start
-Make sure every service's Database has been seeded with 100 items
-cd BookingProxy
-npm start
+INSTRUCTIONS:<br/>
+Clone each ArrrrWeBeAnneBonny Service to your local FEC directory<br/>
+cd into each Service and run:<br/>
+  git pull origin main<br/>
+  npm install<br/>
+  (run their build script)<br/>
+  npm start<br/>
+Make sure every service's Database has been seeded with 100 items<br/>
+cd BookingProxy<br/>
+npm start<br/>
 
