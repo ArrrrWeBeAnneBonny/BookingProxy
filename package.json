@@ -2,9 +2,9 @@
   "name": "booking_proxy",
   "version": "1.0.0",
   "description": "Proxy for Booking service.",
-  "main": "index.js",
+  "main": "proxy.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node proxy.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,6 +19,8 @@
   "homepage": "https://github.com/ArrrrWeBeAnneBonny/booking_proxy#readme",
   "dependencies": {
     "cors": "^2.8.5",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "http-proxy-middleware": "^2.0.0",
+    "request": "^2.88.2"
   }
 }
