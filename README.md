@@ -1,4 +1,3 @@
-#
 Proxy for Booking Service. 
 
 INSTRUCTIONS:<br/>
