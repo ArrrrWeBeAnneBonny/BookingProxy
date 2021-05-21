@@ -25,3 +25,5 @@ INSTRUCTIONS:<br/>
     start: npm start\
   \
   PhotoGallery:\
+    build: npm run react
+    start: npm run server
