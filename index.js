@@ -12,6 +12,3 @@ app.listen(PORT, HOST, () => {
   console.log(`Starting Proxy Server at ${HOST}:${PORT}`);
 });
 
-//add to my front-end:
-// const URL = `/proxy/${PATH}`;
-// return axios.get(URL);
