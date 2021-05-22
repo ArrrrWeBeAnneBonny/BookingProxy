@@ -1,3 +1,5 @@
+//ex. proxy server which I'd use in place of my index.js file if I were not using the cors npm package
+
 const express = require('express'),
     request = require('request'),
     bodyParser = require('body-parser'),
@@ -12,16 +14,14 @@ app.use(express.static('public'));
 
 app.all('*', function (req, res, next) {
 
-    // Set CORS headers: allow all origins, methods, and headers: you may want to lock this down in a production environment
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Methods", "GET, PUT, PATCH, POST, DELETE");
     res.header("Access-Control-Allow-Headers", req.header('access-control-request-headers'));
 
     if (req.method === 'OPTIONS') {
-        // CORS Preflight
         res.send();
     } else {
-        var targetURL = req.header('Target-URL'); // Target-URL ie. https://example.com or http://example.com
+        var targetURL = req.header('Target-URL');
         if (!targetURL) {
             res.send(500, { error: 'There is no Target-Endpoint header in the request' });
             return;
@@ -31,7 +31,6 @@ app.all('*', function (req, res, next) {
                 if (error) {
                     console.error('error: ' + response.statusCode)
                 }
-//                console.log(body);
             }).pipe(res);
     }
 });
