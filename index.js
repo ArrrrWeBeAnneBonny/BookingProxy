@@ -17,7 +17,7 @@ if (mode === 'development' || mode === undefined) {
 } else if (mode === 'production') {
   proxy.use(express.static(__dirname + '/public/prod'));
   PORT = 80;
-  url += "http://ec2-18-117-219-48.us-east-2.compute.amazonaws.com";
+  url += "http://ec2-54-241-114-176.us-west-1.compute.amazonaws.com";
 }
 
 proxy.listen(PORT, () => {
