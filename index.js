@@ -1,14 +1,25 @@
 const express = require('express');
+const cors = require('cors');
 
-const PORT = process.env.PORT || 2000;
-const HOST = "localhost";
+const proxy = express();
+proxy.use(cors());
 
-const app = express();
+const mode = process.env.NODE_ENV;
+console.log(`hi you are in ${mode}`);
 
-app.use(express.static('public'));
+let PORT = 0;
+let url = '';
 
-// Start my Proxy Server
-app.listen(PORT, HOST, () => {
-  console.log(`Starting Proxy Server at ${HOST}:${PORT}`);
+if (mode === 'development' || mode === undefined) {
+  proxy.use(express.static(__dirname + '/public/dev'));
+  PORT = 2000;
+  url += "http://localhost:2000";
+} else if (mode === 'production') {
+  proxy.use(express.static(__dirname + '/public/prod'));
+  PORT = 80;
+  url += "http://ec2-18-117-219-48.us-east-2.compute.amazonaws.com";
+}
+
+proxy.listen(PORT, () => {
+  console.log(`Starting Proxy Server at port ${url}`);
 });
-
