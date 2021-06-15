@@ -10,16 +10,19 @@ console.log(`hi you are in ${mode}`);
 let PORT = 0;
 let url = '';
 
-if (mode === 'development' || mode === undefined) {
-  proxy.use(express.static(__dirname + '/public/dev'));
-  PORT = 2000;
+if (!process.env.NODE_ENV || mode === 'development') {
   url += "http://localhost:2000";
+  PORT = 2000;
 } else if (mode === 'production') {
   proxy.use(express.static(__dirname + '/public/prod'));
+  url += "http://ec2-54-151-15-127.us-west-1.compute.amazonaws.com";
   PORT = 80;
-  url += "http://ec2-54-241-114-176.us-west-1.compute.amazonaws.com";
 }
 
+proxy.use(express.static(__dirname + '/public'));
+console.log('url: ', url);
+console.log('PORT: ', PORT);
+
 proxy.listen(PORT, () => {
-  console.log(`Starting Proxy Server at port ${url}`);
+  console.log(`Starting Proxy Server at ${url}`);
 });
