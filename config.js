@@ -9,7 +9,7 @@ module.exports = {
   production: {
     overview: 'https://fec-overview.s3-us-west-2.amazonaws.com/overview.js',
     reviews: 'https://reviews-avatars.s3-us-west-1.amazonaws.com/reviews.js',
-    booking: 'http://localhost:3002/',
+    booking: 'https://fec-booking.s3-website-us-west-1.amazonaws.com/booking.js',
     photogallery: 'http://localhost:3004/',
     proxy: 'http://ec2-54-151-15-127.us-west-1.compute.amazonaws.com/'
   },
