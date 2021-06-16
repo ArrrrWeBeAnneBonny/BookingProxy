@@ -1,24 +1,24 @@
 const express = require('express');
 const cors = require('cors');
-const config = require('./config.js');
 
 const proxy = express();
+
 proxy.use(cors());
-proxy.use(cors({ origin: config.allowedOrigins }));
 
-const mode = process.env.NODE_ENV;
-console.log(`hi you are in ${mode}`);
+const = allowedOrigins: [
+  'http://localhost:2000/',
+  'http://localhost:3002/',
+  "https://fec-booking.s3.us-west-1.amazonaws.com/1623867148511.booking.js",
+  'http://ec2-54-151-15-127.us-west-1.compute.amazonaws.com/',
+  'http://67.160.218.95.32:3002/',
+  'http://67.160.218.95.32:80/',
+  'http://67.160.218.95.32/'
+];
 
-let PORT = 0;
-let url = '';
+proxy.use(cors({ origin: allowedOrigins }));
 
-if (mode === 'production') {
-  url += config.production.proxy;
-  PORT = config.production.PORT;
-} else if (!process.env.NODE_ENV || mode === 'development') {
-  url += config.dev.proxy;
-  PORT = config.dev.PORT;
-}
+const PORT = 80;
+const url = 'http://ec2-54-151-15-127.us-west-1.compute.amazonaws.com/';
 
 proxy.use(express.static('dist'));
 
