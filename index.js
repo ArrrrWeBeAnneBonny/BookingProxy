@@ -13,12 +13,10 @@ let PORT = 0;
 let url = '';
 
 if (mode === 'production') {
-  proxy.use(express.static(__dirname + '/prod'));
-  url += config.production.booking;
+  url += config.production.proxy;
   PORT = config.production.PORT;
 } else if (!process.env.NODE_ENV || mode === 'development') {
-  proxy.use(express.static(__dirname + '/dev'));
-  url += config.dev.booking;
+  url += config.dev.proxy;
   PORT = config.dev.PORT;
 }
 
