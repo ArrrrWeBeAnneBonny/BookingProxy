@@ -5,7 +5,7 @@ const proxy = express();
 
 proxy.use(cors());
 
-const = allowedOrigins: [
+const allowedOrigins = [
   'http://localhost:2000/',
   'http://localhost:3002/',
   "https://fec-booking.s3.us-west-1.amazonaws.com/1623867148511.booking.js",
