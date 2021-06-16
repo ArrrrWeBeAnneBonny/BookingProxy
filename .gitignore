@@ -1,2 +1,5 @@
-/node_modules
 notes.js
+node_modules
+.ds_store
+dist
+package-lock.json
