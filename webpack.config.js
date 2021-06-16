@@ -3,8 +3,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const TerserPlugin = require("terser-webpack-plugin");
 const urls = require('./config.js');
 
-let config = {
+module.exports = {
   entry: './client/proxy.jsx',
+  plugins: [new HtmlWebpackPlugin({
+    template: './public/index.html'
+  })],
   optimization: {
     minimize: true,
     minimizer: [
@@ -65,26 +68,4 @@ let config = {
       '.jsx'
     ]
   }
-};
-
-module.exports = (env, argv) => {
-  if (argv.mode === 'development') {
-    config.output.publicPath = urls.dev.proxy;
-    config.plugins = [
-      new HtmlWebpackPlugin({
-        template: './dev/index.html'
-      }),
-    ];
-  }
-
-  if (argv.mode === 'production') {
-    config.output.publicPath = urls.production.proxy;
-    config.plugins = [
-      new HtmlWebpackPlugin({
-        template: './prod/index.html'
-      }),
-    ];
-  }
-
-  return config;
 };

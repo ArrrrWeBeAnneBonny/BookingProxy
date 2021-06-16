@@ -7,9 +7,7 @@
     "start": "NODE_ENV=production node index.js",
     "altStart": "NODE_ENV=development nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build-dev": "npx webpack --mode=development --watch",
-    "build-prod": "npx webpack --mode=production",
-    "launch-css": "node ./build/css.js"
+    "build-prod": "webpack --mode=development --config webpack.config.js"
   },
   "repository": {
     "type": "git",
