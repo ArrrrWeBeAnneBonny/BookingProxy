@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const TerserPlugin = require("terser-webpack-plugin");
+const path = require('path');
 
 module.exports = {
   entry: './client/proxy.jsx',
@@ -20,7 +21,7 @@ module.exports = {
     ],
   },
   output: {
-    filename: `${Date.now()}proxy.js`,
+    filename: `proxy.js`,
     path: path.resolve(__dirname, 'dist'),
   },
   module: {
