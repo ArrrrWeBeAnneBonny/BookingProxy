@@ -21,7 +21,7 @@ proxy.use(cors({ origin: allowedOrigins }));
 const PORT = 80;
 const url = 'http://ec2-54-151-15-127.us-west-1.compute.amazonaws.com';
 
-proxy.use(express.static('dist'));
+proxy.use(express.static(__dirname + './public'));
 
 proxy.listen(PORT, () => {
   console.log(`Starting Proxy Server at ${url}`);
