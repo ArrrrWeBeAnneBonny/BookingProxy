@@ -5,7 +5,9 @@ class Nav extends React.Component {
 
   render() {
     return (
-      <div className="banner-container"></div>
+      <div className="banner-container">
+        <div></div>
+      </div>
     );
   }
 }

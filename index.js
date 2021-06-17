@@ -20,20 +20,23 @@ const allowedOrigins = [
 
 proxy.use(cors({ origin: allowedOrigins }));
 
-let PORT = 80;
-let url = 'http://ec2-54-151-15-127.us-west-1.compute.amazonaws.com';
-
 const mode = process.env.NODE_ENV;
-console.log('mode: ', mode);
-if (mode === "development") {
+
+let PORT = 0;
+let url = '';
+
+if (mode === "development" || !process.env.NODE_ENV) {
+  // proxy.use(express.static(__dirname + './public/dev'));
   PORT = 2000;
-  url = 'http://localhost:2000/';
-  proxy.use(express.static(__dirname + '/public/dev'));
-} else {
-  proxy.use(express.static(__dirname + '/public/prod'));
+  url = 'http://localhost:2000';
+} else if (mode === 'production') {
+  // proxy.use(express.static(__dirname + './public/prod'));
+  url = 'http://ec2-54-151-15-127.us-west-1.compute.amazonaws.com';
+  PORT = 80;
 }
 
-console.log(PORT, url);
+proxy.use(express.static('dist'));
+console.log('PORT: ', PORT, 'url: ', url);
 
 proxy.listen(PORT, () => {
   console.log(`Starting Proxy Server at ${url}`);

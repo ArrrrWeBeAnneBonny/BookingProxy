@@ -1,5 +1,5 @@
+import '../style.css';
 import Nav from './Components/Nav.jsx';
-import './style.css';
 
 class Proxy extends React.Component {
   constructor() {
@@ -8,7 +8,9 @@ class Proxy extends React.Component {
 
   render() {
     return (
-      <Nav />
+      <div>
+        <Nav />
+      </div>
     );
   }
 }
